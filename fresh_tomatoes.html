@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #d83c31;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+
+        h1 {
+            font-family: 'Limelight', cursive;
+            font-size: 36px;
+            color: #a0060e;
+        }
+
+        #storyline_text {
+            height: 70px;
+        }
+
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <h1>Fresh Tomatoes Movie Trailers</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      
+<div class="col-md-4 col-lg-4 movie-tile text-center view overlay" data-trailer-youtube-id="a6JB2suJYHM" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/Indiana_Jones_and_the_Last_Crusade.png" width="220" height="342">
+    <h3>Indiana Jones 3 (1989)</h3>
+    <div id="storyline_text">
+        <h6>The intrepid explorer Indiana Jones sets out to rescue his father, a medievalist who has vanished while searching for the Holy Grail. Following clues in the old man's notebook, Indy arrives in Venice, where he enlists the help of a beautiful academic, but they are not the only ones who are on the trail, and some sinister old enemies soon come out of the woodwork.</h6>
+    </div>
+</div>
+
+<div class="col-md-4 col-lg-4 movie-tile text-center view overlay" data-trailer-youtube-id="-W8CegO_Ixw" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/8/85/Terminator2poster.jpg" width="220" height="342">
+    <h3>Terminator 2 (1991)</h3>
+    <div id="storyline_text">
+        <h6>John Connor, the key to civilization's victory over a future robot uprising, is the target of the shape-shifting T-1000, a Terminator sent from the future to kill him. Another Terminator, the revamped T-800, has been sent back to protect the boy. As John and his mother go on the run with the T-800, the boy forms an unexpected bond with the robot.</h6>
+    </div>
+</div>
+
+<div class="col-md-4 col-lg-4 movie-tile text-center view overlay" data-trailer-youtube-id="yUmSVcttXnI" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/f/f9/Edge_of_Tomorrow_Poster.jpg" width="220" height="342">
+    <h3>Edge of Tomorrow (2014)</h3>
+    <div id="storyline_text">
+        <h6>When Earth falls under attack from invincible aliens, no military unit in the world is able to beat them. Maj. William Cage, an officer who has never seen combat, is assigned to a suicide mission. Killed within moments, Cage finds himself thrown into a time loop, in which he relives the same brutal fight -- and his death -- over and over again.</h6>
+    </div>
+</div>
+
+<div class="col-md-4 col-lg-4 movie-tile text-center view overlay" data-trailer-youtube-id="d96cjJhvlMA" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b5/Guardians_of_the_Galaxy_poster.jpg" width="220" height="342">
+    <h3>Guardians of the Galaxy (2014)</h3>
+    <div id="storyline_text">
+        <h6>Brash space adventurer Peter Quill finds himself the quarry of relentless bounty hunters after he steals an orb coveted by Ronan, a powerful villain. To evade Ronan, Quill is forced into an uneasy truce with four disparate misfits. But when he discovers the orb's true power and the cosmic threat it poses, Quill must rally his ragtag group to save the universe.</h6>
+    </div>
+</div>
+
+<div class="col-md-4 col-lg-4 movie-tile text-center view overlay" data-trailer-youtube-id="ue80QwXMRHg" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/7d/Thor_Ragnarok_poster.jpg" width="220" height="342">
+    <h3>Thor Ragnarok (2017)</h3>
+    <div id="storyline_text">
+        <h6>Imprisoned on the other side of the universe, the mighty Thor finds himself in a deadly gladiatorial contest that pits him against the Hulk, his former ally and fellow Avenger. Thor's quest for survival leads him in a race against time to prevent the all-powerful Hela from destroying his home world and the Asgardian civilization.</h6>
+    </div>
+</div>
+
+<div class="col-md-4 col-lg-4 movie-tile text-center view overlay" data-trailer-youtube-id="dPaU4Gymt3E" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Hunt_for_the_Wilderpeople.png" width="220" height="342">
+    <h3>Hunt for the Wilderpeople (2016)</h3>
+    <div id="storyline_text">
+        <h6>A boy and his foster father become the subjects of a manhunt after they get stranded in the New Zealand wilderness.</h6>
+    </div>
+</div>
+
+    </div>
+  </body>
+</html>
